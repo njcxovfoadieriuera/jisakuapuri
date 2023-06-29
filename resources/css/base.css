@@ -1,0 +1,258 @@
+@charset "UTF-8";
+/* reset */
+body, h1, h2, h3, h4, h5, h6, p, address,
+ul, ol, li, dl, dt, dd, img, form, table, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+	text-align: left;
+	list-style-type: none;
+	border-collapse: collapse;
+}
+
+textarea { font-size: 100%; vertical-align:middle;}
+img { border-style: none; display: block; }
+hr { display: none; }
+em{font-style: normal}
+input{line-height:auto;vertical-align:middle;}
+strong.more{color:#c30}
+a{text-decoration: none;}
+
+html {
+
+}
+
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+main{
+  background-color: antiquewhite;
+  margin: 0 3%;
+  margin-top: 60px;
+
+}
+/* 上の部分は気にせずここから書く */
+
+.hamburger {
+  position: fixed;
+	top: 0;
+  margin-top: 3%;
+  margin-right: 3%;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  width: 40px;
+  height:30px;
+  margin-left: auto;
+}
+
+.hamburger i {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #2da690;
+  transition: .8s;  
+}
+
+.hamburger i:nth-child(1) {
+  top: 0;
+}
+
+.hamburger i:nth-child(2) {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.hamburger i:nth-child(3) {
+  bottom: 0;
+}
+
+.hamburger.show i:nth-child(1) {
+  transform: translateY(15px) rotate(-45deg);
+}
+
+.hamburger.show i:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.show i:nth-child(3) {
+  transform: translateY(-13px) rotate(45deg);
+}
+
+.nav.show {
+  opacity: 1;
+  visibility:visible;
+  left: 80%;
+  z-index: -1;
+}
+
+.nav {
+  position: fixed;
+  left: 100%;
+  opacity: 1;
+  visibility:visible;
+  z-index: 3;
+  opacity: 0.8;
+  transition: .8s;
+  width: 100%;
+}
+
+.headernavlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 80vh;
+}
+
+.sied {
+  margin-top: 20px;
+  position: fixed;
+	left: 94%;
+	top: 0;
+}
+/* ここから上がサイドラインとハンバーガーメニュー */
+
+.admin_reg{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin_item{
+  margin-top: 10px;
+  width: 360px;
+  display: flex;
+  justify-content: space-between;
+}
+/* ここから上はコース名チャプター名の登録と変更 */
+
+.top {
+  font-size: 30px;
+}
+
+.top_headline{
+  margin-left: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top_item{
+  display: flex;
+}
+
+.top_headline_list{
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.top_center{
+display: flex;
+align-items: center;
+}
+
+.batu_button{
+  width: 50px;
+  height: 50px;
+}
+
+.star{
+  font-size: 30px;
+}
+
+.top_child_item{
+display: flex;
+width: 100%;
+
+
+}
+
+.top_child_action{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin-left: 3%;
+  align-items: center;
+}
+
+.top_parent_action{
+  display: flex;
+  justify-content: space-between;
+  width: 18%;
+
+}
+
+.top_headline_frame{
+  margin: 0 3%;
+}
+
+.top_list{
+  margin-left: 20px;
+  width: 100%;
+}
+
+/* ここから上が5.トップページ */
+.top_cre_action{
+  display: flex;
+  justify-content: space-between;
+}
+
+.top_cre_item{
+  margin: 0 30px;
+}
+/* ここから上が6.トップページ作成 */
+
+.sche_item{
+  display: flex;
+  justify-content: space-around;
+}
+/* ここから上がschedule.blade.php */
+
+.over_item_action{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 11%;
+}
+
+.over_item{
+  margin: 0 60px;
+}
+/* ここから上が7.概要 */
+.sele_headline{
+  margin: 0 6%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sele_list{
+  margin: 0 7%;
+  display: flex;
+  justify-content: space-between;
+}
+.sele_list_course{
+  display: flex;  
+}
+
+.sele_list_item{
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sele_back{
+margin-left: 6%;
+}
