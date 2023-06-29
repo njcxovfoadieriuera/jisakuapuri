@@ -219,7 +219,7 @@ class Controller extends BaseController
 
         Articles::destroy($id);//特定のidのレコード削除
 
-        foreach ($chapters_ids as $chapters_ids_dele){//
+        foreach ($chapters_ids as $chapters_ids_dele){
             Chapters::destroy($chapters_ids_dele);
         }
         
