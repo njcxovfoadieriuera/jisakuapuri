@@ -195,21 +195,26 @@ class Controller extends BaseController
         foreach ($chapters_records as $chapters_record){//
             $chapters_ids[] = $chapters_record['id'];//チャプターid取得
         }
-        foreach ($chapters_ids as $count1 => $chapters_id){//
-            $favorites_records[] = Favorite::where('chapter_id', $chapters_id)->get();//お気に入りレコード取得
-            $favorites_ids[] = $favorites_records[$count1][0]['id'];//お気に入りのid取得
-            $favorites_folders = Favorite::where('chapter_id', $chapters_id)
-                                    ->where('folder', 1)
-                                    ->get();
 
-            if (!$favorites_folders->isEmpty()) {
-            $favorites_folder_ids[] = $favorites_folders[0]['id'];
+        if (isset($chapters_ids)){
+            foreach ($chapters_ids as $count1 => $chapters_id){//
+                $favorites_records[] = Favorite::where('chapter_id', $chapters_id)->get();//お気に入りレコード取得
+                $favorites_ids[] = $favorites_records[$count1][0]['id'];//お気に入りのid取得
+                $favorites_folders = Favorite::where('chapter_id', $chapters_id)
+                                        ->where('folder', 1)
+                                        ->get();
+
+                if (!$favorites_folders->isEmpty()) {
+                $favorites_folder_ids[] = $favorites_folders[0]['id'];
+                }
             }
         }
   
-        foreach ($favorites_folder_ids as $count2 => $favorites_folder_id){//
-            $folders_records[] = Folder::where('favorite_id', $favorites_folder_id)->get();//folderレコード取得
-            $folders_ids[] = $folders_records[$count2][0]['id'];//お気に入りのid取得
+        if (isset($favorites_folder_ids)){
+            foreach ($favorites_folder_ids as $count2 => $favorites_folder_id){//
+                $folders_records[] = Folder::where('favorite_id', $favorites_folder_id)->get();//folderレコード取得
+                $folders_ids[] = $folders_records[$count2][0]['id'];//お気に入りのid取得
+            }
         }
 
         // dd($id);//記事id(主キー)
@@ -219,16 +224,22 @@ class Controller extends BaseController
 
         Articles::destroy($id);//特定のidのレコード削除
 
-        foreach ($chapters_ids as $chapters_ids_dele){
-            Chapters::destroy($chapters_ids_dele);
+        if (isset($chapters_ids)){
+            foreach ($chapters_ids as $chapters_ids_dele){
+                Chapters::destroy($chapters_ids_dele);
+            }
         }
         
-        foreach ($favorites_ids as $favorites_ids_dele){//
-            Favorite::destroy($favorites_ids_dele);
+        if (isset($favorites_ids)){
+            foreach ($favorites_ids as $favorites_ids_dele){//
+                Favorite::destroy($favorites_ids_dele);
+            }
         }
         
-        foreach ($folders_ids as $folders_ids_dele){//
-            Folder::destroy($folders_ids_dele);
+        if (isset($folders_ids)){
+            foreach ($folders_ids as $folders_ids_dele){//
+                Folder::destroy($folders_ids_dele);
+            }
         }
         
         return redirect()->route('top');
@@ -342,10 +353,13 @@ class Controller extends BaseController
         foreach($favorites_folders[0] as $favorites_id){
             $favorites_folder_ids[] =  $favorites_id['id'];
         }
-  
-        foreach ($favorites_folder_ids as $count2 => $favorites_folder_id){//
-            $folders_records[] = Folder::where('favorite_id', $favorites_folder_id)->get();//folderレコード取得
-            $folders_ids[] = $folders_records[$count2][0]['id'];//お気に入りのid取得
+        
+        if (isset($favorites_folder_ids)){
+            foreach ($favorites_folder_ids as $count2 => $favorites_folder_id){//
+                $folders_records[] = Folder::where('favorite_id', $favorites_folder_id)->get();//folderレコード取得
+                $folders_ids[] = $folders_records[$count2][0]['id'];//お気に入りのid取得
+            }
+
         }
 
         // dd($id);記事idを持っているチャプターid(主キー)
@@ -354,12 +368,16 @@ class Controller extends BaseController
 
         Chapters::destroy($id);
         
-        foreach ($favorite_ids as $favorites_ids_dele){//
-            Favorite::destroy($favorites_ids_dele);
+        if (isset($favorite_ids)){
+            foreach ($favorite_ids as $favorites_ids_dele){//
+                Favorite::destroy($favorites_ids_dele);
+            }
         }
         
-        foreach ($folders_ids as $folders_ids_dele){//
-            Folder::destroy($folders_ids_dele);
+        if (isset($folders_ids)){
+            foreach ($folders_ids as $folders_ids_dele){//
+                Folder::destroy($folders_ids_dele);
+            }
         }
         
         return redirect()->route('select_chapter',['id'=>$art_id]);

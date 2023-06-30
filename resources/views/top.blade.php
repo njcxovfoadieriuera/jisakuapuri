@@ -1,8 +1,8 @@
 <x-app-layout>
-  <main class="bg-yellow-200 m-7" >
+  <main class="bg-gray-100 m-7" >
     <div class="flex justify-between ">
       <div class="text-left">
-        <p class="text-2xl">トップページ</p>
+        <p class="text-2xl font-black">受講するコース選択</p>
       </div>
       <div class="mx-auto">
         <a class="mr-24" href="#top-form">ページ下部へ行く</a>
@@ -23,7 +23,7 @@
           @if($role ==1)
             <p>削除ボタン</p>
           @elseif($role ==0)
-            <p>完了</p>
+            <p class="hidden">完了</p>
           @endif
         </div>
       </div>
@@ -41,19 +41,23 @@
             <!-- </form> -->
             <div class="ml-5 w-full">
               <div class="flex">
-                <a href="{{ route('top_create',$al->id) }}">{{ $al->title }}</a>
+                <a class="font-black underline font-mono" href="{{ route('top_create',$al->id) }}">{{ $al->title }}</a>
               </div>
-              <p>{{ $al->body }}</p>
+              
+              @if (isset($al->body))<p>{{ $al->body }}<p>@endif
+              @if (!isset($al->body))<p>コースのタイトルをクリックしてコースの概要を記入してください<p>@endif
+
+              
             </div>
           </div>
           
           <div class="flex justify-between w-1/4 ml-3/100 items-center">
             @if($role ==1)
-              <a href="{{ route('select_chapter',$al->id) }}" class="flex items-center ml-8">chapterに移動</a>
+              <a href="{{ route('select_chapter',$al->id) }}" class="flex items-center ml-8 underline">chapterに移動</a>
               <a href="{{ route('top_delete',$al->id) }}" onclick="return confirm('本当に削除しますか?')" class="w-12 h-12 text-5xl">×</a>
             @elseif($role ==0)
               <p></p>
-            <p class="flex  items-center text-3xl">★</p>
+            <p class="flex items-center text-3xl hidden">★</p>
             @endif
             
           </div>
@@ -75,12 +79,12 @@
     @endifラジオボタンのバリデーションが出来てない --}}
 
     @if($role ==1)
-      <div id="top-form" class="flex flex-col items-center">
+      <div class="flex flex-col items-center">
         <!-- <form action="" method="post">
           @csrf -->
           <div class="mt-3 w-96 flex justify-between">
             <input type="text" id="" name="change" value="{{ old('change') }}">
-            <button type="submit" id="change">登録コース名変更</button>
+            <button class="underline" type="submit" id="change">登録コース名変更</button>
           </div>
         </form>
         <p>※変更するコース名にチェックを入れてください</p>
@@ -94,7 +98,7 @@
           @csrf
           <div class="mt-3 w-96 flex justify-between mb-4">
             <input type="text" id="" name="Course_Name" value="{{ old('Course_Name') }}">
-            <button type="submit" id="Course_Name">新規登録</button>
+            <button class="underline" type="submit" id="Course_Name">新規登録</button>
           </div>
         </form>
 
@@ -108,13 +112,13 @@
           @csrf
           <div class="mt-3 w-96 flex justify-between mb-4">
             <input type="text" id="" name="genre" value="{{ old('genre') }}">
-            <button type="submit" id="genre">ジャンル追加</button>
+            <button class="underline" type="submit" id="genre">ジャンル追加</button>
           </div>
         </form>
         
       </div>
     @endif
-      <a href="" class="flex justify-center">ページ上部へ行く</a>
+      <a  id="top-form" href="" class="flex justify-center">ページ上部へ行く</a>
   </main>
 </x-app-layout>
 

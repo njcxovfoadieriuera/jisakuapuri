@@ -1,5 +1,5 @@
 <x-app-layout>
-  <main class="bg-yellow-200 m-7" >
+  <main class="bg-gray-100 m-7" >
 
   <div class="flex justify-between pr-20">
     <div class="text-left">

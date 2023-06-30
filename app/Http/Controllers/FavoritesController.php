@@ -82,11 +82,14 @@ class FavoritesController extends Controller
                     $kari8[] = $karis[$a][$b]['favorite_id'];
                 }
             }
+            // dd($chap_id);
 
             foreach ($chap_id as $c => $kari7){
                 $chap_record = Chapters::where('id', $chap_id[$c])->first('title');//
                 $chap_titles[] = $chap_record['title'];//チャプタータイトル
             }
+            // dd($chap_record);
+
 
             $folder_array = array_combine($Folder_title2, $kari5);//←二つをまとめる
 
@@ -107,27 +110,33 @@ class FavoritesController extends Controller
         $records = Favorite::where('user_id', $user['id'])
         ->where('folder', '0')
         ->get();//ユーザーidからお気に入りidを取り出す処理
+        // dd($records);
         
-        if (empty($records)){//お気に入りフォルダがあれば
+        
+
 
             foreach ($records as $count => $record){//お気に入りidからチャプターidを取り出す処理
+                if (!empty($record)){//お気に入り単数があれば
                 $favorite_ids[] = $record['id'];//id（フォルダ化された以外のfavorite_idを取得）
                 $kari14[] =$record['chapter_id'];//chapter_id所持
                 $chapters = Chapters::whereIn('id', $kari14)->get();//チャプターのレコード取得
                 $kari13[]=$chapters[$count]['articles_id'];//articles_id所持   
-            }
-            foreach ($chapters as $count2 => $chapter){//チャプターレコードから記事idを取り出す処理
-                $chapter_titles[] = $chapter['title'];//チャプターのタイトル取得
-                $chapter_bodys[] = $chapter['body'];//チャプターのbody取得
-                $articles = Articles::where('id', $kari13[$count2])->get();
-                $kari12[]=$articles;
-                foreach ($articles as $article){//記事idから記事タイトルを取り出す処理
-                    $article_titles[] = $article['title'];
                 }
             }
-        }
+            if (!empty($chapters)){//お気に入り単数があれば
+                foreach ($chapters as $count2 => $chapter){//チャプターレコードから記事idを取り出す処理
+                    $chapter_titles[] = $chapter['title'];//チャプターのタイトル取得
+                    $chapter_bodys[] = $chapter['body'];//チャプターのbody取得
+                    $articles = Articles::where('id', $kari13[$count2])->get();
+                    $kari12[]=$articles;
+                    foreach ($articles as $article){//記事idから記事タイトルを取り出す処理
+                        $article_titles[] = $article['title'];
+                    }
+                }
+            }
         
-        // dd($chapter_titles);
+        
+        // dd($records);
 
 
         foreach ($favorite_ids as $key => $favorite_id){//配列をまとめる処理と配列の値にキーをつける処理

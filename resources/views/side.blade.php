@@ -5,10 +5,11 @@
   <nav>
     <button id="button" type="button" class="fixed z-10">
       <i id="bars" class="fa-solid fa-bars fa-2x "></i>
-      <i id="xmark" class="fa-solid fa-xmark fa-2x hidden "></i>
+      <i id="xmark" class="fa-solid fa-xmark fa-2x text-white hidden "></i>
     </button>
-    <ul id="menu" class=" text-2xl fixed top-0 right-40 h-full w-full hidden ">
-      <li class="p-3 pt-14"><a href="{{ route('top') }}">トップ</a></li>
+    <ul id="menu" class=" text-1xl fixed top-0 right-40 h-full w-full hidden text-white">
+      <li class="p-3 text-2xl">メニュー</li>
+      <li class="p-3 "><a href="{{ route('top') }}">トップ</a></li>
       <li class="p-3 ">
         <x-dropdown-link :href="route('profile.edit')">
           {{ __('Profile') }}
