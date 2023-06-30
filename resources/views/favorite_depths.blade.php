@@ -1,5 +1,5 @@
 <x-app-layout>
-  <main class="bg-yellow-200 m-7" >
+  <main class="bg-gray-100 m-7" >
   <p class="text-2xl">お気に入り>{{ $resultArray[0]['folder_title'] }}</p>
   
   <div class="m-7">

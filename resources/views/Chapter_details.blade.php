@@ -1,6 +1,6 @@
 <x-app-layout>
-  <main class="bg-yellow-200 m-7">
-    <div class="flex justify-between text-3xl">
+  <main class="bg-gray-100 m-7">
+    <div class="flex justify-between text-3xl font-black">
       <p class="w-9/12">{{ $title }}→{{ $record['title'] }}</p>
       <div class="flex justify-between items-start">
         <button id="myButton" type="button" class="items-start inline-block align-top">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <p class="my-5 mx-10">{{ $record['body'] }}</p>
-    <div class="flex justify-between">
+    <div class="flex justify-between font-black">
       <a href="{{ route('select_chapter', $record['articles_id']) }}">戻る</a>
       <a href="{{ route('select_chapter', $record['articles_id']) }}">完了</a>
     </div>

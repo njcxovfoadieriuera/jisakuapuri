@@ -68,7 +68,7 @@ class FoldersController extends Controller{
   public function folder_lift(Request $request) {//グループ化の解除
     $user = Auth::user();
     $input =$request->all();
-    dd($input);
+    // dd($input);
 
     if (isset($input['chkbx_folder'])){
       // dd($input['chkbx_folder']);
@@ -108,17 +108,29 @@ class FoldersController extends Controller{
       // dd($input['chkbx_folder']);
       foreach ($input['chkbx_folder'] as $dele_folder){//お気に入りフォルダの消去
       $folder = new Folder();
+      $kari15[] = Folder::where('title',$dele_folder)
+            ->where('user_id', $user['id'])
+            ->get();//特定のidの取得
       Folder::where('title',$dele_folder)
             ->where('user_id', $user['id'])
             ->delete();//特定のidのレコード削除
       }
+      foreach ($kari15[0] as $kari16){//以下お気に入りフォルダの中のお気に入り単数削除
+        $karis16[]= $kari16['favorite_id'];
+      }
+      foreach ($karis16 as $kari17){
+        Favorite::where('id',$kari17)
+            ->where('user_id', $user['id'])
+            ->delete();//特定のidのレコード削除
+      }
+      // dd($karis16);
     }
 
     if (isset($input['chkbx'])){
       // dd($input['chkbx']);
       foreach ($input['chkbx'] as $dele_favorite){//お気に入りの消去
       $favorite = new Favorite();
-      Folder::where('id',$dele_favorite)
+      Favorite::where('id',$dele_favorite)
             ->where('user_id', $user['id'])
             ->delete();//特定のidのレコード削除
       }

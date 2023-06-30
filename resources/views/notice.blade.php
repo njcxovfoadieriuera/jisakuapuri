@@ -1,7 +1,7 @@
 <x-app-layout>
-  <main class="bg-yellow-200 m-7" >
+  <main class="bg-gray-100 m-7" >
     <div class="flex justify-between">
-        <h1 class="text-3xl">お知らせ</h1>
+        <h1 class="text-3xl font-black">お知らせ</h1>
         <a class="mr-20" href="#notice-form">ページ下部に行く</a>
         @if($role ==1)
           <p>削除ボタン</p>
@@ -17,7 +17,7 @@
             @csrf
             <input type="radio" name="radio" id="radio" value="{{ $al->id }}">
           <div class="ml-5 w-full">
-            <a href="{{ route('not_create',['id'=>$al->id]) }}">{{ $al->title }}</a>
+            <a class="font-black underline font-mono" href="{{ route('not_create',['id'=>$al->id]) }}">{{ $al->title }}</a>
             <p class="ml-4">{{ $al->body }}</p>
           </div>
         </div>
@@ -45,7 +45,7 @@
       <div id="notice-form" class="flex flex-col items-center">
         <div class="mt-3 w-96 flex justify-between">
           <input type="text" id="" name="change" value="{{ old('change') }}">
-          <button type="submit" id="change">登録お知らせ名変更</button>
+          <button class="underline" type="submit" id="change">登録お知らせ名変更</button>
         </div>
         </form>
         <p>※変更するお知らせ名にチェックを入れてください</p>
@@ -59,14 +59,14 @@
           @csrf
           <div class="mt-3 w-96 flex justify-between mb-4">
             <input type="text" id="" name="news_Name" value="{{ old('news_Name') }}">
-            <button type="submit" id="news_Name">新規登録</button>
+            <button class="underline" type="submit" id="news_Name">新規登録</button>
           </div>
         </form>
       </div>
     @endif
     <div class="flex justify-between ">
       <div class="text-left">
-        <a href="{{ route('top') }}" >戻る</a>
+        <a class="font-black" href="{{ route('top') }}" >戻る</a>
       </div>
       <div class="mx-auto">
         <a href="">ページ上部に行く</a>

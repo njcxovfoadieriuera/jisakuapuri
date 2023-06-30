@@ -1,10 +1,10 @@
 <x-app-layout>
-  <main class="bg-yellow-200 m-7" >
+  <main class="bg-gray-100 m-7" >
     {{-- @include('schedule')一旦保留（開始日とか） --}}
     
     <div class="flex justify-between ">
-      <p class="text-3xl w-7/12">{{ $title }}</p>
-      <a class="mr-28" href="#chapter-form">ページ下部へ行く</a>
+      <p class="text-3xl font-black">{{ $title }}</p>
+      <a class="" href="#chapter-form">ページ下部へ行く</a>
       @if($role ==1)
         <p>削除ボタン</p>
       @elseif($role ==0)
@@ -23,8 +23,9 @@
               <p>●</p>
             @endif
           <div class="flex-col ml-7 w-10/12">
-            <a href="{{ route('Chapter_production',['id'=>$al->id]) }}">{{ $al->title }}</a>
-            <p>{{ $al->body }}</p>
+            <a class="font-black underline font-mono" href="{{ route('Chapter_production',['id'=>$al->id]) }}">{{ $al->title }}</a>
+            @if (isset($al->body))<p>{{ $al->body }}<p>@endif
+            @if (!isset($al->body))<p>チャプターのタイトルをクリックしてコースの概要を記入してください<p>@endif
           </div>
         </div>
         @if($role ==1)
@@ -45,10 +46,10 @@
     @endif
 
     @if($role ==1)
-      <div id="chapter-form" class="flex flex-col items-center">
+      <div class="flex flex-col items-center">
         <div class="flex justify-between mt-2 w-96">
           <input type="text" id="" name="change" value="{{ old('change') }}">
-          <button type="submit" id="change">登録チャプター名変更</button>
+          <button class="underline" type="submit" id="change">登録チャプター名変更</button>
         </div>
         </form>
         <p>※変更するチャプター名にチェックを入れてください</p>
@@ -62,7 +63,7 @@
           @csrf
           <div class="flex justify-between mt-2 w-96">
             <input type="text" id="" name="chapter_Name" value="{{ old('chapter_Name') }}">
-            <button type="submit" id="chapter_Name">新規登録</button>
+            <button class="underline" type="submit" id="chapter_Name">新規登録</button>
           </div> 
         </form> 
       </div>
@@ -70,10 +71,10 @@
 
     <div class="flex justify-between ">
       <div class="text-left">
-        <a href="{{ route('top') }}" class="sele_back">戻る</a>
+        <a class="font-black" href="{{ route('top') }}" class="sele_back">戻る</a>
       </div>
       <div class="mx-auto">
-        <a href="" class="mr-11">ページ上部へ行く</a>
+        <a id="chapter-form" href="" class="mr-11">ページ上部へ行く</a>
       </div>
     </div>
   </main>
