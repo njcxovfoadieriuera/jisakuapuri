@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return redirect('/login');
 });
 
 // Route::get('/top', function () {return view('top');})->name('top');

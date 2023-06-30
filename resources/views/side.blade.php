@@ -7,7 +7,7 @@
       <i id="bars" class="fa-solid fa-bars fa-2x "></i>
       <i id="xmark" class="fa-solid fa-xmark fa-2x hidden "></i>
     </button>
-    <ul id="menu" class="fixed top-0 right-40 h-full w-full hidden ">
+    <ul id="menu" class=" text-2xl fixed top-0 right-40 h-full w-full hidden ">
       <li class="p-3 pt-14"><a href="{{ route('top') }}">トップ</a></li>
       <li class="p-3 ">
         <x-dropdown-link :href="route('profile.edit')">
