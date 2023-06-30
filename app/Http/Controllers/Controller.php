@@ -325,9 +325,43 @@ class Controller extends BaseController
 
     
     public function sele_chap_delete($id) {//チャプター削除機能
+        
         $record = Chapters::find($id);
         $art_id = $record->articles_id;
-        Chapters::destroy($id);//特定のidのレコード削除
+        // dd($art_id);
+
+        $favorites_records[] = Favorite::where('chapter_id', $id)->get();//お気に入りレコード取得
+        $favorites_ids[] = $favorites_records[0];
+        foreach($favorites_ids[0] as $favorites_id){
+            $favorite_ids[] = $favorites_id['id'];//お気に入りのid取得
+        }
+        $favorites_folders[] = Favorite::where('chapter_id', $id)
+                                       ->where('folder', 1)
+                                       ->get();
+
+        foreach($favorites_folders[0] as $favorites_id){
+            $favorites_folder_ids[] =  $favorites_id['id'];
+        }
+  
+        foreach ($favorites_folder_ids as $count2 => $favorites_folder_id){//
+            $folders_records[] = Folder::where('favorite_id', $favorites_folder_id)->get();//folderレコード取得
+            $folders_ids[] = $folders_records[$count2][0]['id'];//お気に入りのid取得
+        }
+
+        // dd($id);記事idを持っているチャプターid(主キー)
+        // dd($favorite_ids);//チャプターidを持っているお気に入りid(主キー)
+        // dd($folders_ids);//お気に入りidを持っているフォルダーid(主キー)
+
+        Chapters::destroy($id);
+        
+        foreach ($favorite_ids as $favorites_ids_dele){//
+            Favorite::destroy($favorites_ids_dele);
+        }
+        
+        foreach ($folders_ids as $folders_ids_dele){//
+            Folder::destroy($folders_ids_dele);
+        }
+        
         return redirect()->route('select_chapter',['id'=>$art_id]);
     }
 

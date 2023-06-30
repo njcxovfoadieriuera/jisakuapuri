@@ -105,22 +105,25 @@ class FavoritesController extends Controller
 
         //ここから下がお気に入り（単数）関係
         $records = Favorite::where('user_id', $user['id'])
-                           ->where('folder', '0')
-                           ->get();//ユーザーidからお気に入りidを取り出す処理
+        ->where('folder', '0')
+        ->get();//ユーザーidからお気に入りidを取り出す処理
+        
+        if (empty($records)){//お気に入りフォルダがあれば
 
-        foreach ($records as $count => $record){//お気に入りidからチャプターidを取り出す処理
-            $favorite_ids[] = $record['id'];//id（フォルダ化された以外のfavorite_idを取得）
-            $kari14[] =$record['chapter_id'];//chapter_id所持
-            $chapters = Chapters::whereIn('id', $kari14)->get();//チャプターのレコード取得
-            $kari13[]=$chapters[$count]['articles_id'];//articles_id所持   
-        }
-        foreach ($chapters as $count2 => $chapter){//チャプターレコードから記事idを取り出す処理
-            $chapter_titles[] = $chapter['title'];//チャプターのタイトル取得
-            $chapter_bodys[] = $chapter['body'];//チャプターのbody取得
-            $articles = Articles::where('id', $kari13[$count2])->get();
-            $kari12[]=$articles;
-            foreach ($articles as $article){//記事idから記事タイトルを取り出す処理
-                $article_titles[] = $article['title'];
+            foreach ($records as $count => $record){//お気に入りidからチャプターidを取り出す処理
+                $favorite_ids[] = $record['id'];//id（フォルダ化された以外のfavorite_idを取得）
+                $kari14[] =$record['chapter_id'];//chapter_id所持
+                $chapters = Chapters::whereIn('id', $kari14)->get();//チャプターのレコード取得
+                $kari13[]=$chapters[$count]['articles_id'];//articles_id所持   
+            }
+            foreach ($chapters as $count2 => $chapter){//チャプターレコードから記事idを取り出す処理
+                $chapter_titles[] = $chapter['title'];//チャプターのタイトル取得
+                $chapter_bodys[] = $chapter['body'];//チャプターのbody取得
+                $articles = Articles::where('id', $kari13[$count2])->get();
+                $kari12[]=$articles;
+                foreach ($articles as $article){//記事idから記事タイトルを取り出す処理
+                    $article_titles[] = $article['title'];
+                }
             }
         }
         
