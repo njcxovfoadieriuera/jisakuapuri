@@ -13,7 +13,7 @@
       <div class="ml-12 flex justify-between">
         <form action="" class="" method="post">
           @csrf
-          <select name="genre" id="genre" class="w-1/4" onchange="genre_sort()">
+          <select name="genre" id="genre" class="" onchange="genre_sort()">
             @foreach($genres as $genre)
               <option value="{{ $genre->id }}">{{ $genre->name }}</option>
             @endforeach
@@ -118,7 +118,7 @@
         
       </div>
     @endif
-      <a  id="top-form" href="" class="flex justify-center">ページ上部へ行く</a>
+      <a  id="top-form" href="" class="ml-20 flex justify-center">ページ上部へ行く</a>
   </main>
 </x-app-layout>
 

@@ -13,10 +13,10 @@
         @csrf
         @method('put')
 
-        <div>
+        <div class="flex justify-between">
             <x-input-label for="current_password" :value="__('Current Password')" />
-            <x-text-input id="current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password"/>
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
+            <x-text-input id="current_password" name="current_password" type="password" class="mt-1 block w-6/12" autocomplete="current-password"/>
         </div> 
 
         <div class="flex justify-between">
