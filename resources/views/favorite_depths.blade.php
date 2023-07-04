@@ -13,9 +13,9 @@
               <input type="hidden" name="folder_title" value={{ $result['folder_title'] }}>
             <!-- </button> -->
 
-            <div class="mb-7 w-11/12">
-              <h3 class="ml-6">{{ $result['chapter_title'] }}</h3>
-              <h4 class="ml-10">{{ $result['chapter_body'] }}</h4>
+            <div class="mb-7">
+              <h3 class="ml-6 font-black underline font-mono">{{ $result['chapter_title'] }}</h3>
+              <h4 class="ml-10 whitespace-pre-wrap">{{ $result['chapter_body'] }}</h4>
             </div>
           </div>
         </div>
@@ -34,13 +34,13 @@
           </div>
         </div>
         <div class="flex flex-col">
-          <input id="folder_dele" class="my-8" type="submit" value="グループ化の解除" formaction="{{ route('folder_lift_dep') }}">
+          <input id="folder_dele" class="my-5 hover:bg-black hover:text-white" type="submit" value="グループ化の解除" formaction="{{ route('folder_lift_dep') }}">
           <p id="hidden2" class="hidden mt-20"></p>
-          <input type="submit" value="お気に入りの削除" formaction="{{ route('folder_delete_dep') }}">
+          <input class="hover:bg-black hover:text-white" type="submit" value="お気に入りの削除" formaction="{{ route('folder_delete_dep') }}">
 
         </div>
       </div>
     </form>
   </div>
-    <a href="{{ route('favorite_like') }}">戻る</a> 
+    <a class="hover:bg-black hover:text-white" href="{{ route('favorite_like') }}">戻る</a> 
 </x-app-layout>
