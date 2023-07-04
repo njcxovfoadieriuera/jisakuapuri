@@ -22,7 +22,7 @@
         {{-- @vite(['resources/js/top.js']) --}}
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-white dark:bg-gray-900 pb-1">
+        <div class="min-h-screen bg-gray-50 dark:bg-gray-900 pb-1">
             {{-- @include('layouts.navigation') --}}
             @include('side')
 

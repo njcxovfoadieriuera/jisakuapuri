@@ -13,6 +13,8 @@ use App\Models\Notices;
 use App\Models\Genre;
 use App\Models\Favorite;
 use App\Models\Folder;
+use App\Models\User;
+
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -35,12 +37,12 @@ class Controller extends BaseController
     public function Course_Name(Articles $A,Request $request) {//コース名登録機能
         $input =$request->all();
         $rule = [
-            'Course_Name' => 'required | max:50',
+            'Course_Name' => 'required | max:20',
         ];
 
         $messages = [ 
             "required" => "必須入力です",  
-            "max" => "50文字以内入力です",  
+            "max" => "20文字以内入力です",  
             // "digits_between" => "10桁または11桁で入力してください",  
             // "email" => "メールアドレスを正しく入力してください", 
             // "unique" =>"登録済みのメールアドレスです" ,
@@ -70,12 +72,12 @@ class Controller extends BaseController
         $input =$request->all();
         // dd($input);
         $rule = [
-            'genre' => 'required | max:50',
+            'genre' => 'required | max:20',
         ];
 
         $messages = [ 
             "required" => "必須入力です",  
-            "max" => "50文字以内入力です",  
+            "max" => "20文字以内入力です",  
             // "digits_between" => "10桁または11桁で入力してください",  
             // "email" => "メールアドレスを正しく入力してください", 
             // "unique" =>"登録済みのメールアドレスです" ,
@@ -136,14 +138,14 @@ class Controller extends BaseController
     public function top_cre(Request $request) {//コースの概要作成機能
         $input =$request->all();
         $rule = [
-            'body' => 'required | max:500',
+            'body' => 'required | max:5000',
             'genre_id' => 'regex:/^(?!1$).*/',
         ];
 
         $messages = [ 
             "required" => "必須入力です",  
             "regex" => "ジャンルを選択してください",
-            "max" => "500文字以内入力です",  
+            "max" => "5000文字以内入力です",  
         ];
         $reco = Articles::find($input['record_id']);  // レコードを取得//いらない？
         $validator = Validator::make($input, $rule,$messages);
@@ -166,13 +168,13 @@ class Controller extends BaseController
     public function top_change(Request $request) {//コース名変更機能
         $input =$request->all();
         $rule = [
-            'change' => 'between:1,50',
+            'change' => 'between:1,20',
             'radio' => 'required',
         ];
 
         $messages = [ 
             "required" => "変更するコースを選択してください",   
-            "between" => "50文字以内で入力してください", 
+            "between" => "20文字以内で入力してください", 
         ];
         $validator = Validator::make($input, $rule,$messages);
         if ($validator->fails()) {
@@ -196,16 +198,20 @@ class Controller extends BaseController
             $chapters_ids[] = $chapters_record['id'];//チャプターid取得
         }
 
+        // dd($chapters_ids);
+
         if (isset($chapters_ids)){
             foreach ($chapters_ids as $count1 => $chapters_id){//
                 $favorites_records[] = Favorite::where('chapter_id', $chapters_id)->get();//お気に入りレコード取得
-                $favorites_ids[] = $favorites_records[$count1][0]['id'];//お気に入りのid取得
-                $favorites_folders = Favorite::where('chapter_id', $chapters_id)
-                                        ->where('folder', 1)
-                                        ->get();
+                if (isset($favorites_records[$count1][0]['id'])){
+                    $favorites_ids[] = $favorites_records[$count1][0]['id'];//お気に入りのid取得
+                    $favorites_folders = Favorite::where('chapter_id', $chapters_id)
+                                            ->where('folder', 1)
+                                            ->get();
 
-                if (!$favorites_folders->isEmpty()) {
-                $favorites_folder_ids[] = $favorites_folders[0]['id'];
+                    if (!$favorites_folders->isEmpty()) {
+                    $favorites_folder_ids[] = $favorites_folders[0]['id'];
+                    }
                 }
             }
         }
@@ -258,12 +264,12 @@ class Controller extends BaseController
         $input['articles_id'] = $id;
             
         $rule = [
-            'chapter_Name' => 'required | max:50',
+            'chapter_Name' => 'required | max:20',
         ];
 
         $messages = [ 
             "required" => "必須入力です",   
-            "max" => "50文字以内入力です",
+            "max" => "20文字以内入力です",
         ];
         $validator = Validator::make($input, $rule,$messages);
 
@@ -309,7 +315,7 @@ class Controller extends BaseController
     public function chap_pro(Request $request) {//チャプターの概要作成機能
         $input =$request->all();
         $rule = [
-            'body' => 'required | max:500',
+            'body' => 'required | max:5000',
         ];
 
         $messages = [ 
@@ -386,13 +392,13 @@ class Controller extends BaseController
     public function sele_change(Request $request,$id) {//チャプター名変更機能
         $input =$request->all();
         $rule = [
-            'change' => 'between:1,50',
+            'change' => 'between:1,20',
             'radio' => 'required',
         ];
 
         $messages = [ 
             "required" => "変更するコースを選択してください",   
-            "between" => "50文字以内で入力してください", 
+            "between" => "20文字以内で入力してください", 
         ];      
         $validator = Validator::make($input, $rule,$messages);
         if ($validator->fails()) {
@@ -416,12 +422,12 @@ class Controller extends BaseController
     public function news_Name(Notices $N,Request $request) {//お知らせ名登録機能
         $input =$request->all();      
         $rule = [
-            'news_Name' => 'required | max:50',
+            'news_Name' => 'required | max:20',
         ];
 
         $messages = [ 
             "required" => "必須入力です",  
-            "max" => "50文字以内入力です",   
+            "max" => "20文字以内入力です",   
         ];
         $validator = Validator::make($input, $rule,$messages);
         if ($validator->fails()) {
@@ -461,13 +467,13 @@ class Controller extends BaseController
     public function not_change(Request $request) {//お知らせ名変更機能
         $input =$request->all();
         $rule = [
-            'change' => 'between:1,50',
+            'change' => 'between:1,20',
             'radio' => 'required',
         ];
 
         $messages = [ 
             "required" => "変更するコースを選択してください",   
-            "between" => "50文字以内で入力してください", 
+            "between" => "20文字以内で入力してください", 
         ];
         $validator = Validator::make($input, $rule,$messages);
         if ($validator->fails()) {
@@ -510,6 +516,25 @@ class Controller extends BaseController
 
         $record->save();  // レコードを保存
         return redirect()->route('notice');
+    }
+
+    public function user_list() {//ユーザー一覧機能
+        $user = Auth::user();
+        $users = User::all();
+
+        // dd($users[0]['created_at']);
+
+    
+
+        // dd($users);
+        return view('user_list',['role' => $user['role'],'users'=>$users]);
+    }
+
+    public function user_dele($id){//ユーザー削除機能
+        // dd($id);
+        User::destroy($id);
+        return redirect()->route('user_list');
+
     }
 }
 

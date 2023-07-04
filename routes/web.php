@@ -84,6 +84,9 @@ Route::post('/folder_delete_dep', [FoldersController::class, 'folder_delete_dep'
 
 Route::post('/folder_lift_dep', [FoldersController::class, 'folder_lift_dep'])->name('folder_lift_dep');//完成画面遷移あり
 
+Route::get('/user_list', [Controller::class, 'user_list'])->name('user_list');//完成画面遷移あり
+
+Route::get('/user_dele/{id}', [Controller::class, 'user_dele'])->name('user_dele');//完成
 
 
 Route::get('/dashboard', function () {

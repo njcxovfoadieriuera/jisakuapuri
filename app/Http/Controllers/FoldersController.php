@@ -25,12 +25,12 @@ class FoldersController extends Controller{
     // dd($input);
  
     $rule = [
-      'folder_name' => 'required | max:100',
+      'folder_name' => 'required | max:20',
     ];
 
     $messages = [ 
         "required" => "必須入力です",  
-        "max" => "100文字以内入力です",  
+        "max" => "20文字以内入力です",  
     ];
     $validator = Validator::make($input, $rule,$messages);
 
