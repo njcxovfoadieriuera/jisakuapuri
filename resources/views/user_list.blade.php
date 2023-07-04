@@ -1,5 +1,5 @@
 <x-app-layout>
-  <main class=" m-7">
+  <main class="m-7">
   <h1 class="text-4xl ml-7">ユーザー一覧</h1>
   <div class="flex justify-between mx-7 font-black">
     <p class="w-1/5 text-2xl">名前</p>
