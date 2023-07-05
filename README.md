@@ -40,7 +40,7 @@ php自作
 
 ZAMPP/MySQL/PHP/Laravel
 
-###データベース
+### データベース
 
 データベース名：
 
