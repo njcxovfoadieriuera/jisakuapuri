@@ -14,33 +14,18 @@
             <!-- </button> -->
 
             <div class="mb-7">
-              <h3 class="ml-6 font-black underline font-mono">{{ $result['chapter_title'] }}</h3>
-              <h4 class="ml-10 whitespace-pre-wrap">{{ $result['chapter_body'] }}</h4>
+              <h3 class="ml-6 font-black text-2xl font-mono">{{ $result['chapter_title'] }}</h3>
+              <h4 class="ml-6 whitespace-pre-wrap">{{ $result['chapter_body'] }}</h4>
             </div>
           </div>
         </div>
       @endforeach
-
-      <div class="flex justify-between">
-        <div></div>
-        <div class="justify-center"> 
-          <div class="flex justify-between items-center m-5">
-            <p>チェックをいれたグループ化されているお気に入りを取り出します。</p>
-            <p>(お気に入りは解除されません)</p>
-          </div>
-          <div class="flex justify-between items-center m-5">
-            <p>チェックを入れた物を削除します</p>
-            <p>(お気に入りが削除されます)</p>
-          </div>
-        </div>
-        <div class="flex flex-col">
-          <input id="folder_dele" class="my-5 hover:bg-black hover:text-white" type="submit" value="グループ化の解除" formaction="{{ route('folder_lift_dep') }}">
+        <div class="flex justify-around">
+          <input id="folder_dele" class="my-5 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white h-8 py-1 px-2 border border-green-500 hover:border-transparent rounded" type="submit" value="グループ化の解除" formaction="{{ route('folder_lift_dep') }}">
           <p id="hidden2" class="hidden mt-20"></p>
-          <input class="hover:bg-black hover:text-white" type="submit" value="お気に入りの削除" formaction="{{ route('folder_delete_dep') }}">
-
+          <input class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white h-8 py-1 px-2 border border-green-500 hover:border-transparent rounded" type="submit" value="お気に入りの削除" formaction="{{ route('folder_delete_dep') }}">
         </div>
-      </div>
     </form>
   </div>
-    <a class="hover:bg-black hover:text-white" href="{{ route('favorite_like') }}">戻る</a> 
+    <a class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white h-8 py-1 px-2 border border-green-500 hover:border-transparent rounded" href="{{ route('favorite_like') }}">戻る</a> 
 </x-app-layout>

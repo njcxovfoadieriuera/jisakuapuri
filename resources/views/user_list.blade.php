@@ -19,7 +19,7 @@
         @elseif($user['role'] ==0)
           <p class="w-1/5 text-right">ユーザー</p>
         @endif
-        <a class="w-5 text-right" href="{{ route('user_dele',$user['id']) }}"><i class=" fa-solid fa-trash-can hover:text-red-500"></i></a>
+        <a class="w-5 text-right" href="{{ route('user_dele',$user['id']) }}" onclick="return confirm('本当に削除しますか?')"><i class=" fa-solid fa-trash-can hover:text-red-500"></i></a>
       </div>
     </form>
   @endforeach

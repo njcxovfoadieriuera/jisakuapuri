@@ -26,7 +26,7 @@
               <div class="flex">
                 <i class="fa-solid fa-folder fa-xl mt-3  text-yellow-400"></i>
                 <i class="fa-regular fa-folder fa-xl mt-3 relative -left-6"></i>
-                <input class="font-black underline font-mono hover:bg-black hover:text-white relative -left-6 cursor-pointer" type="submit" name="folder_title" value="{{ $folder_title }}" formaction="{{ route('favorite_depths') }}">
+                <input class="font-black font-mono text-2xl  hover:text-green-500 relative -left-6 cursor-pointer" type="submit" name="folder_title" value="{{ $folder_title }}" formaction="{{ route('favorite_depths') }}">
               </div>
 
               <h3 class="ml-10 ">@foreach($folder as $chap_title)・{{ $chap_title }}@endforeach</h3>  
@@ -48,7 +48,7 @@
           <!-- </button> -->
 
           <div class="mb-7 w-full">
-            <h2 class="ml-2 font-black underline font-mono">{{ $favorite_record['article_title'] }}</h2>
+            <h2 class="ml-2 font-black text-2xl font-mono">{{ $favorite_record['article_title'] }}</h2>
             <details class="whitespace-pre-wrap ml-4 "><summary class="cursor-pointer ">{{ $favorite_record['chapter_title'] }}</summary>{{ $favorite_record['chapter_body'] }}</details>
           </div>
 
@@ -66,12 +66,12 @@
       <div class="flex justify-between items-center">
         <div class="flex items-center">
           <p>グループ名：</p>
-          <input type="text" id="" name="folder_name">
+          <input type="text" id="" class="rounded h-8" name="folder_name">
         </div>
-        <input id="folder_button" class="ml-2 hover:bg-black hover:text-white h-10" type="submit" value="グループ化" formaction="{{ route('folder_register') }}">
+        <input id="folder_button" class="ml-2 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white h-8 py-1 px-2 border border-green-500 hover:border-transparent rounded" type="submit" value="グループ化" formaction="{{ route('folder_register') }}">
       </div>
-      <input id="folder_dele" class="ml-2 hover:bg-black hover:text-white " type="submit" value="グループ化の解除" formaction="{{ route('folder_lift') }}">
-      <input type="submit" class="ml-2 hover:bg-black hover:text-white " value="お気に入りの削除" formaction="{{ route('folder_delete') }}">
+      <input id="folder_dele" class="ml-2 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white h-8 py-1 px-2 border border-green-500 hover:border-transparent rounded " type="submit" value="グループ化の解除" formaction="{{ route('folder_lift') }}">
+      <input type="submit" class="ml-2 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white h-8 py-1 px-2 border border-green-500 hover:border-transparent rounded" value="お気に入りの削除" formaction="{{ route('folder_delete') }}">
     </div>
   </form>
 

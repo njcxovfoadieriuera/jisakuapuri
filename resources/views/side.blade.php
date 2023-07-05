@@ -8,7 +8,7 @@
       <i id="xmark" class="fa-solid fa-xmark fa-2x hidden text-white"></i>
     </button>
     <ul id="menu" class=" text-1xl fixed top-0 right-40 h-full w-full hidden text-white bg-green-500]">
-      <li class="px-3 py-8 text-2xl font-bold">メニュー</li>
+      <li class="px-3 pt-8 pb-10 text-2xl font-bold">メニュー</li>
       <li class="p-3  hover:text-green-500 hover:bg-white font-bold"><a href="{{ route('top') }}">トップ</a></li>
       <li class="p-3 hover:text-green-500 hover:bg-white font-bold">
         <x-dropdown-link :href="route('profile.edit')">

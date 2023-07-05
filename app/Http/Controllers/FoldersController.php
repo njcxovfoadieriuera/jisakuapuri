@@ -143,7 +143,7 @@ class FoldersController extends Controller{
   public function folder_delete_dep(Request $request) {//お気に入りの削除 深部
     $user = Auth::user();
     $input =$request->all();
-    dd($input);
+    // dd($input);
 
     // if (isset($input['chkbx_folder'])){
     //   // dd($input['chkbx_folder']);
