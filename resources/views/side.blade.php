@@ -23,7 +23,7 @@
         @endif
       
       <li class="p-3 hover:text-green-500 hover:bg-white font-bold"><a href="{{ route('notice') }}">お知らせ</a></li>
-      <li class="p-3 hover:text-green-500 hover:bg-white relative top-56 font-bold">
+      <li class="p-3 hover:text-green-500 hover:bg-white relative font-bold">
         <form method="POST" action="{{ route('logout') }}">
           @csrf
           <x-dropdown-link :href="route('logout')"
