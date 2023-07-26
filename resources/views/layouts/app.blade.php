@@ -17,9 +17,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @vite(['resources/js/hamburger2.js'])
         @vite(['resources/js/favorite.js'])
-        @vite(['resources/js/folder.js'])
-        {{-- @vite(['resources/js/scroll.js']) --}}
-        {{-- @vite(['resources/js/top.js']) --}}
+        @vite(['resources/js/folder.js'])        
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-50 dark:bg-gray-900 pb-1">
@@ -34,5 +32,6 @@
             </main>
         </div>
         <script src="/js/genres.js"></script>
+        {{-- <script src="{{ asset('js/custom.js') }}"></script> --}}
     </body>
 </html>

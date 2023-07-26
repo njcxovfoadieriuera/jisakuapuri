@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\FoldersController;
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\GoogleCalendarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,6 +89,12 @@ Route::post('/folder_lift_dep', [FoldersController::class, 'folder_lift_dep'])->
 Route::get('/user_list', [Controller::class, 'user_list'])->name('user_list');//完成画面遷移あり
 
 Route::get('/user_dele/{id}', [Controller::class, 'user_dele'])->name('user_dele');//完成
+
+Route::get('/calendar-kari', [GoogleCalendarController::class, 'index'])->name('calendar');//追加機能カレンダー
+
+// Route::get('/calendar', [GoogleCalendarController::class, 'index']);//追加機能カレンダー
+Route::resource('/calendar', GoogleCalendarController::class);//追加機能カレンダー
+// Route::resource('/calendar', 'GoogleCalendarController');//apiカレンダー
 
 
 Route::get('/dashboard', function () {
