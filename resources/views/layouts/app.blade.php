@@ -22,7 +22,6 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-50 dark:bg-gray-900 pb-1">
             {{-- @include('layouts.navigation') --}}
-            @include('side')
 
             <!-- Page Heading -->
 
@@ -30,6 +29,8 @@
             <main>
                 {{ $slot }}
             </main>
+            @include('side')
+
         </div>
         <script src="/js/genres.js"></script>
         {{-- <script src="{{ asset('js/custom.js') }}"></script> --}}
