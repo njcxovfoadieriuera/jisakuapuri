@@ -6,7 +6,6 @@ chkbx_folder.forEach(function(checkbox) {
     const allUnchecked = Array.from(chkbx_folder).every(function(checkbox) {
       console.log("ボタンがクリックされました");
       folder_button.classList.add('hidden');
-      hidden1.classList.remove('hidden');
       return !checkbox.checked;
     });
 
@@ -47,7 +46,6 @@ chkbx.forEach(function(checkbox) {
     const allUnchecked = Array.from(chkbx).every(function(checkbox) {
       console.log("ボタンがクリックされました");
       folder_dele.classList.add('hidden');
-      hidden2.classList.remove('hidden');
       return !checkbox.checked;
     });
 

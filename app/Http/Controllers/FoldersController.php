@@ -25,12 +25,12 @@ class FoldersController extends Controller{
     // dd($input);
  
     $rule = [
-      'folder_name' => 'required | max:100',
+      'folder_name' => 'required | max:20',
     ];
 
     $messages = [ 
         "required" => "必須入力です",  
-        "max" => "100文字以内入力です",  
+        "max" => "20文字以内入力です",  
     ];
     $validator = Validator::make($input, $rule,$messages);
 
@@ -143,7 +143,7 @@ class FoldersController extends Controller{
   public function folder_delete_dep(Request $request) {//お気に入りの削除 深部
     $user = Auth::user();
     $input =$request->all();
-    dd($input);
+    // dd($input);
 
     // if (isset($input['chkbx_folder'])){
     //   // dd($input['chkbx_folder']);

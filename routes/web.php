@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\FoldersController;
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\GoogleCalendarController;
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -83,6 +86,22 @@ Route::post('/favorite_depths', [FavoritesController::class, 'favorite_depths'])
 Route::post('/folder_delete_dep', [FoldersController::class, 'folder_delete_dep'])->name('folder_delete_dep');//完成画面遷移あり
 
 Route::post('/folder_lift_dep', [FoldersController::class, 'folder_lift_dep'])->name('folder_lift_dep');//完成画面遷移あり
+
+Route::get('/user_list', [Controller::class, 'user_list'])->name('user_list');//完成画面遷移あり
+
+Route::get('/user_dele/{id}', [Controller::class, 'user_dele'])->name('user_dele');//完成
+
+Route::get('/calendar-kari', [GoogleCalendarController::class, 'index'])->name('calendar');//追加機能カレンダー
+
+// Route::get('/calendar', [GoogleCalendarController::class, 'index']);//追加機能カレンダー
+Route::resource('/calendar', GoogleCalendarController::class);//追加機能カレンダー
+// Route::resource('/calendar', 'GoogleCalendarController');//apiカレンダー
+
+Route::post('/calendar_register', [ScheduleController::class, 'calendar_register'])->name('calendar_register');//スケジュール登録機能
+
+Route::post('/schedule-get', [ScheduleController::class, 'scheduleGet'])->name('schedule-get');//スケジュール取得
+
+Route::get('/schedule_dell/{eventId}', [ScheduleController::class, 'schedule_dell'])->name('schedule_dell');//スケジュール削除
 
 
 
