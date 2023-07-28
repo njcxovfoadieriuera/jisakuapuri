@@ -13,17 +13,10 @@ let calendar = new Calendar(calendarEl, {
       center: "title",
       right: "",
   },
-  // events: param,
+  // events: param,//googleからのイベント取得されている変数param
   locale: "ja",
-  // height: 800,
   contentHeight: "auto",
-  dayMaxEvents: true,
-  // if(){
-  // eventColor: '#378006'
-  // }
-
-  
-  
+  dayMaxEvents: true,  
 
   // 日付をクリック、または範囲を選択したイベント
   selectable: true,
@@ -37,29 +30,13 @@ let calendar = new Calendar(calendarEl, {
         title: eventName,
         start: info.startStr,
         end: info.endStr,
-        // id: i++,
-        // color: 'red'
-
-        // allDay: true,
       };
-  
-      
-  
       // サーバーにデータをPOST通信で送信
       postDataToServer(eventData);
-
-      console.log("kaettekita")
-      // イベントを追加
-      
-      // calendar.addEvent(data);
-      console.log("追加できない")
-      // console.log(data)
-
     }
   }, 
   
   events: function (info, successCallback, failureCallback) {//一覧表示
-    console.log("明日がある");
     fetch("/schedule-get", {
       method: "POST",
       headers: {
@@ -111,14 +88,10 @@ let calendar = new Calendar(calendarEl, {
   },
 
   eventClick: function(arg) {//イベントのクリック＆削除
-      console.log(arg);
       const eventId = arg.event._def.publicId;
-
-      // typeof eventId
 
       if(eventId) {
         // 変数aが存在する時の処理
-        console.log(eventId)
         if (confirm('削除しますか？')) {
           arg.event.remove()
       
@@ -151,9 +124,7 @@ let calendar = new Calendar(calendarEl, {
 });
 
 
-async function postDataToServer(eventData) {//イベント登録
-  console.log("通信sitemasu");
-  
+async function postDataToServer(eventData) {//イベント登録  
   const json = await fetch(`/calendar_register`, {
     method: 'POST',
     headers: {
@@ -165,21 +136,11 @@ async function postDataToServer(eventData) {//イベント登録
 
   .then(response => response.json()) // 返ってきたレスポンスをjsonで受け取って次のthenへ渡す
   .then(data => {
-    console.log("koko");
-    console.log(data); // 返ってきたデータ
-    
+    data["id"] = data.schedule_id;
+    data["color"] = 'red';
 
-    const returndata = {
-      schedule_id: data.schedule_id,
-      title: data.title,
-      start: data.start,
-      end: data.end,
-      color: 'red'
-    };
-    console.log(returndata);
-    calendar.addEvent(returndata);
-
-    // return data;
+    //イベントを見た目のみ追加
+    calendar.addEvent(data);
   })
 
   .catch(error => {
@@ -187,15 +148,5 @@ async function postDataToServer(eventData) {//イベント登録
   })
 
 }
-
-//JavaScript側はPHPから受け取る値をPHPタグ＆echoで出力する
-
-// const schedule = JSON.parse('<?php echo $schedule_json; ?>');
-// console.log({schedule});
-
-
-
-
-
 
 calendar.render();
