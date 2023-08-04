@@ -12,12 +12,16 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         
+        
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/Grades.css'])
         @vite(['resources/js/hamburger2.js'])
-        @vite(['resources/js/favorite.js'])
-        @vite(['resources/js/folder.js'])        
+        @vite(['resources/js/Grades.js'])
+        {{-- @vite(['resources/js/favorite.js'])
+        @vite(['resources/js/folder.js'])         --}}
+      
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-50 dark:bg-gray-900 pb-1">
@@ -32,7 +36,10 @@
             @include('side')
 
         </div>
-        <script src="/js/genres.js"></script>
+        {{-- <script src="/js/genres.js"></script> --}}
+        <script src="{{ asset('js/count.js') }}" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
         {{-- <script src="{{ asset('js/custom.js') }}"></script> --}}
     </body>
 </html>

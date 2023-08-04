@@ -1,0 +1,14 @@
+/* データセット '点数A' のラベルのフォントサイズを20に設定 */
+#stage .chartjs-render-monitor .chartjs-legend li:nth-child(1) span {
+  font-size: 20px;
+}
+
+/* データセット '点数B' のラベルのフォントサイズを18に設定 */
+#stage .chartjs-render-monitor .chartjs-legend li:nth-child(2) span {
+  font-size: 18px;
+}
+
+/* データセット '点数C' のラベルのフォントサイズを16に設定 */
+#stage .chartjs-render-monitor .chartjs-legend li:nth-child(3) span {
+  font-size: 16px;
+}
