@@ -24,6 +24,9 @@
       
       <li class="p-3 hover:text-green-500 hover:bg-white font-bold"><a href="{{ route('notice') }}">お知らせ</a></li>
       <li class="p-3 hover:text-green-500 hover:bg-white font-bold"><a href="{{ route('calendar') }}">カレンダー</a></li>
+      <li class="p-3 hover:text-green-500 hover:bg-white font-bold"><a href="https://calendar.google.com/calendar/">google カレンダー</a></li>
+      <li class="p-3 hover:text-green-500 hover:bg-white font-bold"><a href="{{ route('user_test') }}">テスト</a></li>
+      <li class="p-3 hover:text-green-500 hover:bg-white font-bold"><a href="{{ route('Grades') }}">成績</a></li>
       <li class="p-3 hover:text-green-500 hover:bg-white relative font-bold">
         <form method="POST" action="{{ route('logout') }}">
           @csrf

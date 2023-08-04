@@ -7,6 +7,7 @@ use App\Http\Controllers\FoldersController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\GoogleCalendarController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\UsertestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -102,6 +103,13 @@ Route::post('/calendar_register', [ScheduleController::class, 'calendar_register
 Route::post('/schedule-get', [ScheduleController::class, 'scheduleGet'])->name('schedule-get');//スケジュール取得
 
 Route::get('/schedule_dell/{eventId}', [ScheduleController::class, 'schedule_dell'])->name('schedule_dell');//スケジュール削除
+
+Route::get('/user_test', [UsertestController::class, 'user_test'])->name('user_test');//テストへ遷移
+
+Route::post('/test_end', [UsertestController::class, 'test_end'])->name('test_end');//テスト完了後自動で遷移
+Route::get('/test_end', [UsertestController::class, 'test_end'])->name('test_end');//テスト完了後自動で遷移
+
+Route::get('/Grades', [UsertestController::class, 'Grades'])->name('Grades');//テスト完了後自動で遷移
 
 
 

@@ -7,4 +7,5 @@
   <main class="py-10 px-20 relative z-0">
     <div id='calendar'></div>
   </main>
+  <a href="https://calendar.google.com/calendar/">カレンダーへ行きます</a>
 </x-app-layout>
