@@ -3,7 +3,7 @@ if (typeof countdown != 'undefined') {
   const startTime = Date.now();
 
   //変数の定義---------------------------------------------------------------------
-  var count   = 3;     //カウントダウンの数字を格納する変数  3分なので180
+  var count   = 10;     //カウントダウンの数字を格納する変数  3分なので180
   var min     = 0;       //残り時間「分」を格納する変数
   var sec     = 0;       //残り時間「秒」を格納する変数
   var start_f = false; 

@@ -19,6 +19,8 @@
         @vite(['resources/css/Grades.css'])
         @vite(['resources/js/hamburger2.js'])
         @vite(['resources/js/Grades.js'])
+        @vite(['resources/js/chat.js'])
+        @vite(['resources/js/csv.js'])
         {{-- @vite(['resources/js/favorite.js'])
         @vite(['resources/js/folder.js'])         --}}
       
@@ -39,6 +41,7 @@
         {{-- <script src="/js/genres.js"></script> --}}
         <script src="{{ asset('js/count.js') }}" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+        
 
         {{-- <script src="{{ asset('js/custom.js') }}"></script> --}}
     </body>

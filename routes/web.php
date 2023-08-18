@@ -8,7 +8,9 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\GoogleCalendarController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\UsertestController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +113,15 @@ Route::get('/test_end', [UsertestController::class, 'test_end'])->name('test_end
 
 Route::get('/Grades', [UsertestController::class, 'Grades'])->name('Grades');//テスト完了後自動で遷移
 
+Route::get('/chats', [ChatController::class, 'chats'])->name('chats');//チャットに遷移
+
+Route::post('/chat/{id}', [ChatController::class, 'chat'])->name('chat');//チャット画面で送信押下
+
+Route::get('/chats_admin/{id}', [ChatController::class, 'chats_admin'])->name('chats_admin');//チャット画面で送信押下
+
+Route::get('/chats_admin_fetch/{id}', [ChatController::class, 'chats_admin_fetch'])->name('chats_admin_fetch');//チャット画面で送信押下
+
+Route::post('/csv', [Controller::class, 'csv'])->name('csv');//csv
 
 
 Route::get('/dashboard', function () {

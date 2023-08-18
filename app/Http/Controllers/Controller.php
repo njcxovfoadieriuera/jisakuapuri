@@ -14,6 +14,8 @@ use App\Models\Genre;
 use App\Models\Favorite;
 use App\Models\Folder;
 use App\Models\User;
+use Doctrine\DBAL\Schema\Schema;
+
 
 
 use Carbon\Carbon;
@@ -535,6 +537,55 @@ class Controller extends BaseController
         User::destroy($id);
         return redirect()->route('user_list');
 
+    }
+
+    public function csv(Request $request) {//csv出力 
+        $request->validate([
+            'csv_name' => 'required|string|max:30',
+        ]);
+
+        $users = User::all();
+        // テーブル名を取得
+        $tableName = with(new User)->getTable();
+        // テーブルのカラム名を取得
+        $columns = \DB::getSchemaBuilder()->getColumnListing($tableName);
+        // ファイルを開く
+        $file = fopen('C:\xampp\htdocs\7-1\storage\\'.$request["csv_name"].'.csv', 'w');
+        // 1行ずつ配列の内容をファイルに書き込む
+
+        // $userData = [
+        //     $columns[0],
+        //     $columns[1],
+        //     $columns[2],
+        //     $columns[6],
+        //     $columns[8],
+        // ];
+        $userData = [
+            "ID",
+            "名前",
+            "Eメール",
+            "登録日",
+            "権限",
+        ];
+        fputcsv($file, $userData);
+
+        foreach ($users as $user) {
+            $createdAt = Carbon::parse($user['created_at']); // Carbonオブジェクトに変換
+            $dateOnly = $createdAt->format('Y/m/d'); // 日付部分のみを取得
+            $roleLabel = ($user['role'] == 0) ? 'ユーザー' : '管理者'; // ロールに応じて表示する文字列を決定
+
+            $userData = [
+                $user['id'],
+                $user['name'],
+                $user['email'], 
+                $dateOnly, 
+                $roleLabel,
+            ];
+            fputcsv($file, $userData);
+        }
+        // ファイルを閉じる
+        fclose($file);
+        return redirect()->route('user_list');
     }
 }
 
