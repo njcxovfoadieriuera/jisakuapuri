@@ -1,0 +1,22 @@
+id,name,email,created_at,role
+1,管理者画面,administrator@administrator,2023/06/16,管理者
+2,ユーザー画面,user@user,2023/06/21,ユーザー
+11,"山田 直子",tsubasa34@example.net,2023/07/05,ユーザー
+12,"笹田 千代",momoko75@example.com,2023/07/05,ユーザー
+13,"中島 千代",ishida.yui@example.com,2023/07/05,ユーザー
+14,"三宅 幹",ogaki.momoko@example.org,2023/07/05,ユーザー
+15,"山田 京助",kkoizumi@example.net,2023/07/05,ユーザー
+16,"喜嶋 京助",chiyo.nishinosono@example.net,2023/07/05,ユーザー
+17,"三宅 明美",chiyo00@example.org,2023/07/05,ユーザー
+18,"渡辺 晃",kwatanabe@example.com,2023/07/05,ユーザー
+19,"佐藤 千代",yosuke.tsuda@example.org,2023/07/05,ユーザー
+20,"喜嶋 裕樹",tsuda.yuki@example.org,2023/07/05,ユーザー
+21,"近藤 稔",rei39@example.net,2023/07/05,ユーザー
+22,"松本 康弘",rmurayama@example.com,2023/07/05,ユーザー
+23,"青田 花子",youichi12@example.org,2023/07/05,ユーザー
+24,"山岸 治",kanou.yasuhiro@example.net,2023/07/05,ユーザー
+25,"小林 桃子",kato.minoru@example.net,2023/07/05,ユーザー
+26,"宮沢 零",gnakamura@example.com,2023/07/05,ユーザー
+27,"浜田 洋介",chiyo91@example.org,2023/07/05,ユーザー
+28,"大垣 太郎",jun69@example.org,2023/07/05,ユーザー
+29,さとう,qwe@qweqwe,2023/08/10,ユーザー

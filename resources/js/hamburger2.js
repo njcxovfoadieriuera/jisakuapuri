@@ -4,4 +4,5 @@ button.addEventListener('click', event => {
   menu.classList.toggle('translate-x-full');
   menu.classList.toggle('bg-green-500');
   menu.classList.toggle('hidden');
+  console.log('クリックされました')
 })
