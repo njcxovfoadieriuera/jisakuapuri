@@ -14,7 +14,10 @@ use App\Models\Genre;
 use App\Models\Favorite;
 use App\Models\Folder;
 use App\Models\User;
+use App\Models\overview;
 use Doctrine\DBAL\Schema\Schema;
+use Illuminate\Support\Facades\Storage;
+
 
 
 
@@ -587,5 +590,59 @@ class Controller extends BaseController
         fclose($file);
         return redirect()->route('user_list');
     }
+
+    public function map(){//会社概要遷移
+        $all = overview::all();
+        if (count($all) > 0) {//会社概要のページに始めてくる
+            $fileContent = Storage::get($all[0]['title'].'.txt');
+
+            if (strpos($fileContent, 'src=""') !== false) {//文字列の中にsrc=""があるか調べる
+                $trimmedContent = substr($fileContent, 1, -2); // 最初と最後の文字を削除
+
+                $pattern = '/src=""([^"]*)"/'; // src="" 内の二重引用符を1つだけ削除する正規表現パターン
+                $replacement = 'src="$1"'; // 1つの二重引用符に置換する
+
+                $modifiedContent = preg_replace($pattern, $replacement, $trimmedContent);
+                
+                return view('map',['modifiedContent' => $modifiedContent]);
+            }
+            return view('map',['modifiedContent' => $fileContent]);
+        }
+
+        $model = new overview();//データベースに初期値保存
+        $model->title = "入力された内容が記載されます";
+        $model->save();
+
+        $modifiedContent="概要を入力してください";
+        return view('map',['modifiedContent' => $modifiedContent]);
+    }
+
+    public function overview(Request $request){//概要新規登録(ファイル化)
+        $input =$request->all();
+        $all = overview::all();
+        $request->validate([
+            'title' => 'required | max:20',
+            'editor_content' => 'required',
+        ]);
+        
+        // ファイルを開く
+        $file = fopen('C:\xampp\htdocs\7-1\storage\app\\'.$input['title'].'.txt', 'w');
+        $userData = [
+            $input['editor_content']
+        ];
+        fputcsv($file, $userData);
+        // ファイルを閉じる
+        fclose($file);
+
+        $record = overview::findOrFail($all[0]['id']);  //更新
+        $record->title= $input['title'];
+        $record->updated_at= date("Y-m-d H:i:s");
+        $record->save();
+        
+        $fileToDelete = $all[0]['title'] . '.txt'; // 削除するファイル名を取得
+        Storage::delete($fileToDelete); // ファイルを削除
+        return redirect()->route('map');
+    }
+
 }
 

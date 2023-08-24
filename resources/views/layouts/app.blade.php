@@ -11,6 +11,8 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Include stylesheet -->
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
         
         
 
@@ -21,6 +23,7 @@
         @vite(['resources/js/Grades.js'])
         @vite(['resources/js/chat.js'])
         @vite(['resources/js/csv.js'])
+        @vite(['resources/js/map.js'])
         {{-- @vite(['resources/js/favorite.js'])
         @vite(['resources/js/folder.js'])         --}}
       
@@ -41,7 +44,7 @@
         {{-- <script src="/js/genres.js"></script> --}}
         <script src="{{ asset('js/count.js') }}" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-        
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>{{-- リッチテキスト --}}
 
         {{-- <script src="{{ asset('js/custom.js') }}"></script> --}}
     </body>

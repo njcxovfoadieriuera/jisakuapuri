@@ -123,6 +123,11 @@ Route::get('/chats_admin_fetch/{id}', [ChatController::class, 'chats_admin_fetch
 
 Route::post('/csv', [Controller::class, 'csv'])->name('csv');//csv
 
+Route::get('/map', [Controller::class, 'map'])->name('map');//map遷移
+
+Route::post('/overview', [Controller::class, 'overview'])->name('overview');//map遷移
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

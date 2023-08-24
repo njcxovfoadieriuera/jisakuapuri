@@ -111,7 +111,7 @@
             <button class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white h-8 py-1 px-2 border border-green-500 hover:border-transparent rounded" type="submit" id="genre">ジャンル追加</button>
           </div>
         </form>
-        
+          
       </div>
     @endif
      <div class="flex justify-center"> 
