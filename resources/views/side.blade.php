@@ -28,8 +28,9 @@
       <li class="p-3 hover:text-green-500 hover:bg-white font-bold"><a href="{{ route('user_test') }}">テスト</a></li>
       <li class="p-3 hover:text-green-500 hover:bg-white font-bold"><a href="{{ route('Grades') }}">成績</a></li>
       @if(Auth::user()->role === 0)
-      <li class="p-3 hover:text-green-500 hover:bg-white font-bold"><a href="{{ route('chats') }}">チャット</a></li>
-        @endif
+        <li class="p-3 hover:text-green-500 hover:bg-white font-bold"><a href="{{ route('chats') }}">チャット</a></li>
+      @endif
+      <li class="p-3 hover:text-green-500 hover:bg-white font-bold"><a href="{{ route('map') }}">会社概要</a></li>
       <li class="p-3 hover:text-green-500 hover:bg-white relative font-bold">
         <form method="POST" action="{{ route('logout') }}">
           @csrf
